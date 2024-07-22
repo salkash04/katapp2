@@ -11,16 +11,11 @@ public class CarServiseImpl implements CarService {
 
     @Override
     public List<Car> carCount(List<Car> list, int count) {
-        List<Car> carList = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            if (carList.size() >= 5) {
-                return carList;
-            } else {
-                carList.add(list.get(i));
-            }
-        }
-        return carList;
+        int maxCount = Math.min(count, 5);
+
+        return list.subList(0, maxCount);
     }
+
 
     @Override
     public List<Car> createCar() {
